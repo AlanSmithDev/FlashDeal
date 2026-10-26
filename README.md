@@ -45,7 +45,7 @@
 
 并且功能在普通版能力的基础上，补齐 **“高并发稳定性、限流功能、令牌的发送、数据一致性保障、可观测与故障闭环”** 等多种维度
 
-### 黑马点评 Plus 项目详细讲解 🔗：[👉 点击查看讲解](https://www.javaup.chat/hmdp-plus/overview/project-change)
+### 黑马点评 Plus 项目详细讲解 🔗：[👉 点击查看讲解](https://github.com/AlanSmithDev)
 
 - 🚦 **全链路流控：** 令牌前置授权 + 令牌桶限流，将“资格判断”与“流量控制”前置到入口，显著降低突发流量对系统的冲击。
 - 🗄️ **多层缓存策略：** 本地缓存 + Redis 缓存 + 空值缓存 + 布隆过滤器，有效降低 DB 压力与热点击穿风险。
@@ -56,11 +56,11 @@
 - 📈 **运营能力：** 支持“每日 Top 买家”和“订阅-通知-领取”的活动玩法，提升用户参与度与复购。
 - 🗂️ **分库分表与路由设计：** 分库分表与全局 ID 生成，订单与对账日志按需拆分，为数据规模增长与高并发写入提供保障。
 
-![](https://multimedia-javaup.cn/hmdp-plus/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png)
+![](https://github.com/AlanSmithDev)
 
 # 二、Plus 版本解决了普通版本的哪些问题与痛点!
 ## 2.1 抢购业务的关键痛点
-![](https://multimedia-javaup.cn/hmdp-plus/%E7%A7%92%E6%9D%80%E4%BC%98%E6%83%A0%E5%88%B8.png)
+![](https://github.com/AlanSmithDev)
 - **流量入口缺少前置控制**
     - ⚠️ **问题：** 缺乏权限令牌与令牌桶限流，突发洪峰直接压垮热点接口。
     - 🔹 **Plus 方案：令牌前置授权与令牌桶限流，支持动态阈值与人群优先级（如 VIP）。**
@@ -82,7 +82,7 @@
     - 🔹 **Plus 方案：消息记录信息、操作日志记录、可重入脚本设计、补偿扫描与自动回滚机制。**
 
 ## 2.2 扩展性的关键痛点
-![](https://multimedia-javaup.cn/hmdp-plus/%E4%BC%98%E6%83%A0%E5%88%B8%E7%9A%84%E6%9F%A5%E8%AF%A2.png)
+![](https://github.com/AlanSmithDev)
 - **分布式锁使用粗糙**
     - ⚠️ **问题：** 锁的设计类型单一，没有考虑到多种锁类型，锁超时处理方式。
     - 🔹 **Plus 方案：对 Redisson 重构设计，支持的锁类型：读锁、写锁、公平锁、非公平锁。锁的使用：注解化、命令式、方法级。可自定义处理失败策略。**
@@ -100,11 +100,11 @@
     - 🔹 **Plus 方案：链路埋点、请求画像与异常聚合，关键接口压测与版本对比报告。**
 
 # 三、如何启动项目
--  [准备项目启动条件](https://javaup.chat/hmdp-plus/startup/prerequisites)
--  [如何安装项目需要的中间件环境](https://javaup.chat/hmdp-plus/startup/install-middlewares)
--  [后端项目部署启动](https://javaup.chat/hmdp-plus/startup/backend-deploy)
--  [前端项目部署启动](https://javaup.chat/hmdp-plus/startup/frontend-deploy)
--  [项目文档和视频目录](https://javaup.chat/hmdp-plus/overview/project-change)
+-  [准备项目启动条件](https://github.com/AlanSmithDev)
+-  [如何安装项目需要的中间件环境](https://github.com/AlanSmithDev)
+-  [后端项目部署启动](https://github.com/AlanSmithDev)
+-  [前端项目部署启动](https://github.com/AlanSmithDev)
+-  [项目文档和视频目录](https://github.com/AlanSmithDev)
   
 # 四、关键问题解决的能力详解
 
@@ -194,7 +194,7 @@ Redis 未命中 → 获取重建锁 → 双重检查 → 负载保护 + DB 查�
 - **人群：** 从“用户等级集合”“每日 Top 买家”集合中抽取用户，支持随机与优先级混合策略。
 - **去重与速率控制：** 保证通知不重复与速率不超限，维护良好用户体验与系统负载。
 
-![](https://multimedia-javaup.cn/hmdp-plus/%E8%AE%A2%E9%98%85%E9%80%9A%E7%9F%A5.png)
+![](https://github.com/AlanSmithDev)
 
 # 五、架构设计的能力详解 🏗️
 
@@ -209,7 +209,7 @@ Redis 未命中 → 获取重建锁 → 双重检查 → 负载保护 + DB 查�
 - **消费幂等与去重：** 以业务唯一键 `messageId`（uuid）为幂等键，结合幂等组件和幂等标识，避免重复消费影响状态。
 - **可观测与运维：** 暴露发布/消费成功率、重试次数、DLQ 积压量、端到端耗时等指标；提供“停车场（parking-lot）”模式对个别异常消息人工处置。
 
-![](https://multimedia-javaup.cn/hmdp-plus/MQ%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1.png)
+![](https://github.com/AlanSmithDev)
 
 ## 5.2 Redis 组件设计
 
@@ -231,7 +231,7 @@ Redis 未命中 → 获取重建锁 → 双重检查 → 负载保护 + DB 查�
 - **接入方式与返回契约：** 网关/接口统一拦截器，调用是否放行及剩余配额；拒绝时返回原因码与重试建议。
 - **监控与告警：** 暴露限流触发次数、放行比、剩余令牌、拒绝原因分布等指标；异常突增触发告警与应急限流策略。
 
-<img src="https://multimedia-javaup.cn/hmdp-plus/%E4%BB%A4%E7%89%8C%E6%A1%B6%E7%AE%97%E6%B3%95.png" alt="表关系" width="65%" />
+<img src="https://github.com/AlanSmithDev alt="表关系" width="65%" />
 
 ## 5.4 布隆过滤器的设计
 
@@ -257,7 +257,7 @@ Redis 未命中 → 获取重建锁 → 双重检查 → 负载保护 + DB 查�
 - **锁类型：** 支持读锁、写锁、公平锁、非公平锁，满足不同场景需求。
 - **锁的使用：** 提供注解方式、命令式方式、方法级锁等多种接入方式，方便业务方使用。
 
-![](https://multimedia-javaup.cn/hmdp-plus/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81.png)
+![](https://github.com/AlanSmithDev)
 
 ## 5.6 分布式幂等功能的设计
 
@@ -278,31 +278,31 @@ Redis 未命中 → 获取重建锁 → 双重检查 → 负载保护 + DB 查�
 
 # 六、各种中间件宕机和数据丢失的解决方案
 将真实生产环境中遇到的宕机问题、数据丢失、问题排查等实际逻辑的解决的方案，都会在黑马点评 Plus 版本中进行应用。
-<img src="https://multimedia-javaup.cn/hmdp-plus/%E6%95%85%E9%9A%9C%E9%9A%BE%E7%82%B9%E8%A7%A3%E5%86%B3.png" alt="表关系" width="100%" />
+<img src="https://github.com/AlanSmithDev alt="表关系" width="100%" />
 
 # 七、前端新功能的添加
 黑马点评 Plus 不仅在后端做了大量的改进和优化，同时在前端也新增了一些功能，提升用户体验和系统的整体性能。
 ## 7.1 抢购优惠券前的流程优化
 在抢购优惠券的过程中，重新将页面样式进行了优化，提升了用户的视觉体验。
 
-<img src="https://multimedia-javaup.cn/hmdp-plus/%E6%88%AA%E5%9B%BE/1.png" alt="表关系" width="35%" />
+<img src="https://github.com/AlanSmithDev alt="表关系" width="35%" />
 
 ## 7.2 抢购优惠券过程中的提示优化
 在抢购优惠券的过程中，会弹出提示框，提示用户正在抢购中，只有在真正的抢购成功后，才会告知用户抢购成功，否则会提示抢购失败。
 
-<img src="https://multimedia-javaup.cn/hmdp-plus/%E6%88%AA%E5%9B%BE/2.png" alt="表关系" width="35%" />
+<img src="https://github.com/AlanSmithDev alt="表关系" width="35%" />
 
 ## 7.3 如果抢购成功，后续还可以取消
 在抢购成功后，用户可以选择取消抢购的优惠券，这样可以提升用户的灵活性和体验。
 
-<img src="https://multimedia-javaup.cn/hmdp-plus/%E6%88%AA%E5%9B%BE/3.png" alt="表关系" width="35%" />
+<img src="https://github.com/AlanSmithDev alt="表关系" width="35%" />
 
 ## 7.4 到券提醒
 如果优惠券被售罄了，用户还可以选择“到券提醒”，当有新的优惠券放出来时，系统会自动通知用户。
 
-<img src="https://multimedia-javaup.cn/hmdp-plus/%E6%88%AA%E5%9B%BE/4.png" alt="表关系" width="35%" />
+<img src="https://github.com/AlanSmithDev alt="表关系" width="35%" />
 
 ## 7.5 订阅通知
 当用户选择“到券提醒”后，系统会通知用户已订阅到券提醒。
 
-<img src="https://multimedia-javaup.cn/hmdp-plus/%E6%88%AA%E5%9B%BE/5.png" alt="表关系" width="35%" />
+<img src="https://github.com/AlanSmithDev alt="表关系" width="35%" />
